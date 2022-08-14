@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+
+    <div id="app">
+        <input type="text" v-model="age">
+        <p> Javascript:{{age >= 18 ? '18+ tur girsin iceri' : 'baladi hele' }}</p>
+        <p> Method: {{ageWriter()}}</p>
+        <p>Computed: {{ageWriterComp}}</p>
+        <hr>
+        <p>{{say}}</p>
+        <button @click="say++">sayart</button>
+    </div>
+
+
+
+
+    
+</body>
+<script>
+const app = Vue.createApp({
+    data(){
+        return {
+            age: 15,
+            say:0,
+        };
+    },
+    methods:{
+        ageWriter(){
+            console.log("method isledi");
+            return this.age >= 18 ? '18+ tur girsin iceri' : 'baladi hele';
+        }
+    },
+    computed:{
+        ageWriterComp(){
+            console.log("computed isledi")
+            return this.age >= 18 ? '18+ tur girsin iceri' : 'baladi hele';
+        }
+    },
+    watch:{
+        age(valueNew,valueOld){
+            console.log(`Kohnesi:${valueOld}`)
+            console.log(`Yenisi:${valueNew}`)
+        }
+    }
+   
+}).mount("#app");
+      </script>
+</html>

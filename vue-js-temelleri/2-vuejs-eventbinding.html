@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+
+    <div id="app">
+        <input type="text" v-on:keypress.enter="keyp($event)">
+        <!-- v:on qisa yazilishi @ isaresidir -->
+        <!-- <input type="text" @:keypress="keyp($event)"> -->
+        <button v-on:click="artir()" >Artir</button>
+        <p>{{say}}</p>
+    </div>
+
+
+
+
+    
+</body>
+<script>
+const app = Vue.createApp({
+    data(){
+        return {
+            say: 0,
+            value: 0,     
+        };
+    },
+    methods:{
+        artir(){ 
+            this.say++
+        },
+        keyp(ev){
+             this.say+=parseInt(ev.target.value);
+            
+        },
+    },
+   
+}).mount("#app");
+      </script>
+</html>
